@@ -10,9 +10,9 @@ namespace lab5
     {
         public void OnPasswordChanged(object source, ChangePasswordEventArgs e)
         {
-            Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(2000);
             Console.WriteLine($"\nSMS enviado a {e.Number}: \n {e.Username}, te notificamos que la contrasena de tu cuenta PlusCorp ha sido cambiada. \n");
-            Thread.Sleep(2000);
+            System.Threading.Thread.Sleep(2000);
         }
     }
 }

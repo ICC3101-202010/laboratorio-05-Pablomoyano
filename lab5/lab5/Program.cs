@@ -14,6 +14,7 @@ namespace lab5
             Server server = new Server(database);
             MailSender mailSender = new MailSender();
             SMSSender smsSender = new SMSSender();
+            User user = new User();
 
 
             //Suscribir los que escuchan los eventos
@@ -25,6 +26,9 @@ namespace lab5
             server.PasswordChanged += mailSender.OnPasswordChanged;
             //3- Suscribir OnCambiadaContrasena de smsSender para que escuche el evento CambiadaContrasena enviado por servidor
             server.PasswordChanged += smsSender.OnPasswordChanged;
+            //Subscripciones del enunciado
+            user.EmailSent += mailSender.OnEmailSent;
+            server.EmailVerified += user.OnEmailVerified;
 
 
             // Controla la ejecucion mientras el usuario no quiera salir
@@ -47,7 +51,7 @@ namespace lab5
                         exec = false;
                         break;
                 }
-                Thread.Sleep(2000);
+                System.Threading.Thread.Sleep(2000);
                 Console.Clear();
             }
         }
